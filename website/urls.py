@@ -1,9 +1,10 @@
 from django.urls import path
-from . import views
+from .views import IndexView
+from .views import ListaFuncionarios
 
 app_name = 'website'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('lista', views.lista_funcionarios, name='lista'),
+    path('', IndexView.as_view()),
+    path('lista', ListaFuncionarios.as_view())
 ]
