@@ -1,9 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django.views.generic import UpdateView
+from django.views.generic import DeleteView
 from .models import Funcionario
 
 # Create your views here.
@@ -52,3 +53,10 @@ class FuncionarioUpdateView(UpdateView):
             ).first()
             
         return funcionario
+
+
+class FuncionarioDeleteView(DeleteView):
+    template_name = 'website/excluir.html'
+    model = Funcionario
+    context_object_name = 'funcionario'
+    success_url = reverse_lazy('website:lista')

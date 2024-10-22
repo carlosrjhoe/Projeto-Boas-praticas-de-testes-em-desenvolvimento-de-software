@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h1>Site para excluir funcionário</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        Você tem certeza que quer excluir
+        o funcionário <b>{{ funcionario.nome }}</b>?
+        <br><br>
+        <button type="button">
+            <a href="{% url 'website:lista' %}">Cancelar</a>
+        </button>
+        <button>Excluir</button>
+    </form>
+
+{% endblock conteudo %}
