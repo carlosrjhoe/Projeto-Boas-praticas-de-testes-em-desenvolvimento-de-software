@@ -1,12 +1,21 @@
-# Helloworld, Django
+# Projeto Boas praticas de testes em desenvolvimento de software
 
-Código produzido como parte do artigo sobre Desenvolvimento Web com Django da Python Academy. 
-[Acesse aqui](https://pythonacademy.com.br/blog/desenvolvimento-web-com-python-e-django-introducao) 
+Código produzido como parte do artigo sobre Desenvolvimento Web com Django da Python, para aplicação dos conceitos básicos de testes com Pytest e Selenium
 e saiba mais!
 
 ## Instalação
 
-Primeiro, recomenda-se a criação de um ambiente virtual. 
+Primeiro, recomenda-se a criação de um ambiente virtual.
+
+```bash
+python -m venv venv
+```
+
+Segundo, ativar ambiente virtual.
+
+```bash
+.\venv\Scripts\activate
+```
 
 _Quer saber mais ambientes virtuais? Então [acesse o link para nosso post 
 sobre ambientes virtuais no Python](https://pythonacademy.com.br/blog/python-e-virtualenv-como-programar-em-ambientes-virtuais)!_
@@ -39,10 +48,3 @@ python manage.py runserver
 
 ## Fique por dentro
 
-Se gostou do conteúdo, siga a Python Academy no nosso blog e redes sociais!
-
-- [Site](https://pythonacademy.com.br)
-- [Facebook](https://facebook.com.br/pythonacademy/)
-- [Blog](https://pythonacademy.com.br/blog/)
-
-E até a próxima!
