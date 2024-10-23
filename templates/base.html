@@ -1,10 +1,13 @@
 {% load static %}
+{% load tempo_atual %}
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>
-            {% block title %} Gerenciador de Funcionários {% endblock %}
+            {% block title %}
+                Gerenciador de Funcionários
+            {% endblock %}
         </title>
         <!-- Estilos -->
         {% block styles %}
@@ -13,16 +16,21 @@
                 type="image/png"
                 href="{% static '/img/Django.png' %}"
             />
-            <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+            <link
+                rel="stylesheet"
+                href="{% static '/css/bootstrap.min.css' %}"
+            />
             <link rel="stylesheet" href="{% static '/css/master.css' %}" />
         {% endblock %}
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href=""
-                ><img src="{% static '/img/Django.png' %}" height="45px"
-            /></a>
+            <a class="navbar-brand" href="{% url 'website:index' %}">
+                <img
+                    src="{% static '/img/Django.png' %}"
+                    height="45px"
+                />
+            </a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -37,22 +45,25 @@
             <div class="collapse navbar-collapse" id="conteudo-navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href=" "
-                            >Página Inicial</a
-                        >
+                        <a class="nav-link" href="{% url 'website:index' %}">
+                            Página Inicial
+                        </a>
                     </li>
                 </ul>
                 <!-- Adicione a lista abaixo -->
                 <ul class="navbar-nav float-right">
                     <li class="nav-item">
                         <!-- Aqui está nosso filtro -->
+                        <a class="nav-link" href="#">
+                            <b>Hora: </b>{% tempo_atual %}
+                        </a>
                     </li>
                 </ul>
             </div>
         </nav>
-        {% block conteudo %} 
-        
-        {% endblock %} 
+        {% block conteudo %}
+
+        {% endblock %}
         
         {% block scripts %}
             <script src="{% static '/js/jquery.min.js' %}"></script>

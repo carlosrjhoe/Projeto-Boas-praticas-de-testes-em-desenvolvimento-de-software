@@ -1,38 +1,44 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
+from django.db.models.base import Model as Model
+from django.urls import reverse_lazy
+from .models import Funcionario
+from .forms import InsereFuncionarioForm
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
-from .models import Funcionario
+from django.views.generic import CreateView
 
-# Create your views here.
+
+class FuncionarioCreateView(CreateView):
+    template_name = 'website/criar.html'
+    model = Funcionario
+    form_class = InsereFuncionarioForm
+    success_url = reverse_lazy('website:lista')
+    
+
+class FuncionarioDeleteView(DeleteView):
+    template_name = 'website/exclui.html'
+    model = Funcionario
+    context_object_name = 'funcionario'
+    success_url = reverse_lazy('website:lista')
+
 
 class IndexTemplateView(TemplateView):
-    template_name = 'website\index.html'
+    template_name = 'website/index.html'
+    
 
-
-class ListaFuncionarios(ListView):
+"""Usando Class Based Views"""
+class FuncionariosListView(ListView):
     template_name = 'website/lista.html'
     model = Funcionario
     context_object_name = 'funcionarios'
 
 
-def criar_funcionario(request):
-    if request.method == 'POST':
-        form = FormularioDeCriacao(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('website/lista.html'))
-    else:
-        return render(request, 'website.form.html', {'form':form})
-
-
 class FuncionarioUpdateView(UpdateView):
     template_name = 'website/atualiza.html'
     model = Funcionario
-    fields = '__all__'
+    fields = ['__all__']
+    context_object_name = 'funcionarios'
 
     def get_object(self, queryset=None):
         funcionario = None
@@ -53,10 +59,4 @@ class FuncionarioUpdateView(UpdateView):
             ).first()
             
         return funcionario
-
-
-class FuncionarioDeleteView(DeleteView):
-    template_name = 'website/excluir.html'
-    model = Funcionario
-    context_object_name = 'funcionario'
-    success_url = reverse_lazy('website:lista')
+    
