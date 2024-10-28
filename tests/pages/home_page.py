@@ -1,13 +1,23 @@
 from selenium.webdriver.common.by import By
 
+
 class HomePage:
     URL = "http://localhost:8000"
 
     def __init__(self, driver):
         self.driver = driver
-        self.home = (By.XPATH, '//*[@class="nav-link" and contains(text(), "Página Inicial")]')
-        self.funcionario = (By.XPATH, '//*[@class="nav-link" and contains(text(), "Funcionários")]')
-        self.produto = (By.XPATH, '//*[@class="nav-link" and contains(text(), "Produtos")]')
+        self.home = (
+            By.XPATH,
+            '//*[@class="nav-link" and contains(text(), "Página Inicial")]',
+        )
+        self.funcionario = (
+            By.XPATH,
+            '//*[@class="nav-link" and contains(text(), "Funcionários")]',
+        )
+        self.produto = (
+            By.XPATH,
+            '//*[@class="nav-link" and contains(text(), "Produtos")]',
+        )
         self.venda = (By.XPATH, '//*[@class="nav-link" and contains(text(), "Vendas")]')
 
     def open(self):
