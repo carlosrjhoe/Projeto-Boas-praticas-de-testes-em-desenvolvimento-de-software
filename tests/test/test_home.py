@@ -2,25 +2,25 @@ import pytest
 from pages.home_page import HomePage
 
 
-def test_acesso_home_com_sucesso(webdriver):
+def test_home_access_success(webdriver):
     home_login = HomePage(webdriver)
     home_login.open()
     assert home_login.get_heading_home_text() == "Página Inicial"
 
 
-def test_verificar_home_se_aparece_funcionarios(webdriver):
+def test_verify_home_if_employees_appear(webdriver):
     home_login = HomePage(webdriver)
     home_login.open()
     assert home_login.get_heading_funcionario_text() == "Funcionários"
 
 
-def test_verificar_home_se_aparece_produtos(webdriver):
+def test_verify_home_if_products_appear(webdriver):
     home_login = HomePage(webdriver)
     home_login.open()
     assert home_login.get_heading_produto_text() == "Produtos"
 
 
-def test_verificar_home_se_aparece_vendas(webdriver):
+def test_verify_home_if_sales_appear(webdriver):
     home_login = HomePage(webdriver)
     home_login.open()
     assert home_login.get_heading_venda_text() == "Vendas"
