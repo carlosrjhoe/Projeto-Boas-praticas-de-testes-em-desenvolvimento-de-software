@@ -3,7 +3,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 class HomePage:
     URL = "http://localhost:8000"
 
@@ -23,7 +22,8 @@ class HomePage:
         )
         self.venda = (By.XPATH, '//*[@class="nav-link" and contains(text(), "Vendas")]')
         self.employee_link_button = (
-            By.XPATH, '//a[@class="nav-link" and contains(@href, "/funcionarios/lista")]'
+            By.XPATH,
+            '//a[@class="nav-link" and contains(@href, "/funcionarios/lista")]',
         )
 
     def open(self):
