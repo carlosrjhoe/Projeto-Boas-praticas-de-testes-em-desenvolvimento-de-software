@@ -32,3 +32,9 @@ def test_click_the_employee_link_button(webdriver):
     home_login.open()
     home_login.click_the_employee_link_button()
     assert home_login.get_the_title_of_the_employees_page()
+
+def test_click_the_products_link_button(webdriver):
+    home_login = HomePage(webdriver)
+    home_login.open()
+    home_login.click_the_product_link_button()
+    assert home_login.get_the_title_of_the_products_page()
