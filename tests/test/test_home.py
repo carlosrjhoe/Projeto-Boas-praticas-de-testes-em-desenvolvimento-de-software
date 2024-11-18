@@ -1,6 +1,4 @@
-import pytest
 from tests.pages.home.home_page import HomePage
-from time import sleep
 
 
 def test_home_access_success(webdriver):
