@@ -1,8 +1,16 @@
 from django.db.models import Sum
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
-from core.models import Funcionario, Produto, Venda
-from erp.forms import InsereFuncionarioForm, InsereProdutoForm, InsereVendaForm
+from django.views.generic import TemplateView
+from django.views.generic import ListView
+from django.views.generic import UpdateView
+from django.views.generic import CreateView
+from django.views.generic import DeleteView
+from core.models import Funcionario
+from core.models import Produto
+from core.models import Venda
+from erp.forms import InsereFuncionarioForm
+from erp.forms import InsereProdutoForm
+from erp.forms import InsereVendaForm
 
 
 # PÁGINA PRINCIPAL
@@ -25,7 +33,9 @@ class HomeView(TemplateView):
             )
 
         # Total em vendas
-        context['total_vendas'] = Venda.objetos.aggregate(vendas=Sum('produto__preco'))
+        context['total_vendas'] = Venda.objetos.aggregate(
+            vendas=Sum('produto__preco')
+        )
 
         # Quantidade total de vendas
         context['qtde_vendas'] = Venda.objetos.count()
