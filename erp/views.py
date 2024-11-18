@@ -23,7 +23,6 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data()
 
         context['vendas'] = Venda.objetos.all()
-        
         # Soma de vendas por funcionário
         context['vendas_funcionario'] = \
             Venda.objetos.values('funcionario__nome').annotate(
