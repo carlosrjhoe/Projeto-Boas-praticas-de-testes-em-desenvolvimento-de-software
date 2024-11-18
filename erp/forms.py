@@ -1,4 +1,6 @@
-from core.models import Funcionario, Produto, Venda
+from core.models import Funcionario
+from core.models import Produto
+from core.models import Venda
 from django import forms
 
 
