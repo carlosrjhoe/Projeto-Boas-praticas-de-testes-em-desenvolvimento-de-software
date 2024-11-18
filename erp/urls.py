@@ -8,7 +8,7 @@ urlpatterns = [
     path("", views.HomeView.as_view(), name="index"),
     # GET /funcionarios
     path(
-        "funcionarios/", views.HomeFuncionarioView.as_view(), 
+        "funcionarios/", views.HomeFuncionarioView.as_view(),
         name="index_funcionarios"
     ),
     # GET /funcionarios/cadastrar
@@ -44,10 +44,10 @@ urlpatterns = [
         name="cadastra_produto"
     ),
     # GET /produtos
-    path("produtos/lista", views.ListaProdutosView.as_view(), 
+    path("produtos/lista", views.ListaProdutosView.as_view(),
          name="lista_produtos"),
     # GET/POST /produtos/{pk}
-    path("produtos/<pk>", views.AtualizaProdutoView.as_view(), 
+    path("produtos/<pk>", views.AtualizaProdutoView.as_view(),
          name="atualiza_produto"),
     # GET/POST /produtos/excluir/{pk}
     path(
