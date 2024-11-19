@@ -37,3 +37,10 @@ def test_click_the_products_link_button(webdriver):
     home.open()
     home.click_the_product_link_button()
     assert home.get_the_title_of_the_products_page()
+
+
+def test_click_the_sales_link_button(webdriver):
+    home = HomePage(webdriver)
+    home.open()
+    home.click_the_sales_link_button()
+    assert home.get_the_title_of_the_sales_page()

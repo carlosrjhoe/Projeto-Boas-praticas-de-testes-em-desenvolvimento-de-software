@@ -28,7 +28,11 @@ class HomePage:
         )
         self.product_link_button = (
             By.XPATH,
-            '//a[@class="nav-link" and contains(@href, "/produtos/lista")]',
+            '//a[@class="nav-link" and contains(@href, "/produtos/lista")]'
+        )
+        self.sales_link_button = (
+            By.XPATH,
+            '//a[@class="nav-link" and contains(@href, "/vendas/lista")]'
         )
 
     def open(self):
@@ -52,6 +56,9 @@ class HomePage:
     def click_the_product_link_button(self):
         self.driver.find_element(*self.product_link_button).click()
 
+    def click_the_sales_link_button(self):
+        self.driver.find_element(*self.sales_link_button).click()
+
     def get_the_title_of_the_employees_page(self):
         return WebDriverWait(self.driver, 5).until(
             EC.title_is("Lista de Funcionários")
@@ -60,4 +67,9 @@ class HomePage:
     def get_the_title_of_the_products_page(self):
         return WebDriverWait(self.driver, 5).until(
             EC.title_is("Lista de Produtos")
+        )
+
+    def get_the_title_of_the_sales_page(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.title_is("Lista de Vendas")
         )
