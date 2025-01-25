@@ -46,5 +46,10 @@ Para executar o servidor de testes do Django, execute:
 python manage.py runserver
 ```
 
-## Fique por dentro
+## Testando
 
+Para executar o teste basta executar:
+
+```bash
+pytest
+```
