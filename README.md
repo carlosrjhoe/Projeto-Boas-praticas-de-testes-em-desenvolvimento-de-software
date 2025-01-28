@@ -53,3 +53,5 @@ Para executar o teste basta executar:
 ```bash
 pytest
 ```
+
+## Testando GitHub
