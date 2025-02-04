@@ -9,12 +9,14 @@ def test_home_access_success(webdriver):
     assert result == expected
 
 
-# def test_verify_home_if_employees_appear(webdriver):
-#     home = HomePage(webdriver)
-#     home.open()
-#     assert home.get_heading_funcionario_text() == "Funcionários"
-#
-#
+def test_verify_home_if_employees_appear(webdriver):
+    home = HomePage(webdriver)
+    home.open()
+    result = home.get_heading_funcionario_text()
+    expected = "Funcionários"
+    assert result == expected
+
+
 # def test_verify_home_if_products_appear(webdriver):
 #     home = HomePage(webdriver)
 #     home.open()
