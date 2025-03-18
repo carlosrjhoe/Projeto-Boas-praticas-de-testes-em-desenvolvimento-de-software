@@ -24,6 +24,10 @@ class FuncionarioPage(HomePage):
             By.XPATH, '//a[@class="btn btn-primary btn-sm" and contains(text(), "Cadastrar Funcionário")]'
         )
         self.list_of_employees = (By.XPATH, '//div[@class="card-header"]/b')
+        self.refresh_button = (
+            By.XPATH, '//a[@class="btn btn-primary btn-sm" and contains(text(), "Atualizar")]'
+        )
+        self.input_name_employe = (By.XPATH, '//input[@id="id_nome"]')
 
     def register_employee(self):
         try:
@@ -72,3 +76,14 @@ class FuncionarioPage(HomePage):
 
     def send_registration(self):
         self.driver.find_element(*self.enviar_input).click()
+
+    def click_refresh_button(self):
+        element = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(self.refresh_button)
+        )
+        element.click()
+
+    def get_input_name_employe(self):
+        element = self.driver.find_element(*self.input_name_employe)
+        value = element.get_attribute('value')
+        return value
