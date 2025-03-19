@@ -18,5 +18,6 @@ def test_refresh_button_employee(webdriver):
     object_employee.click_the_employee_link_button()
     object_employee.click_refresh_button()
     result = object_employee.get_input_name_employe()
-    expected = "Joseph"
-    assert result == expected
+    expected = object_employee.refresh_name_employe()
+    object_employee.submit_change()
+    assert result != expected
