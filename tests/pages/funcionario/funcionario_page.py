@@ -21,13 +21,21 @@ class FuncionarioPage(HomePage):
             By.XPATH, '//button[@class="btn btn-primary" and contains(text(), "Enviar")]'
         )
         self.cadastrar_funcionario_button = (
-            By.XPATH, '//a[@class="btn btn-primary btn-sm" and contains(text(), "Cadastrar Funcionário")]'
+            By.XPATH, '//a[@class="btn btn-primary btn-sm" '
+                      'and contains(text(), "Cadastrar Funcionário")]'
         )
         self.list_of_employees = (By.XPATH, '//div[@class="card-header"]/b')
         self.refresh_button = (
             By.XPATH, '//a[@class="btn btn-primary btn-sm" and contains(text(), "Atualizar")]'
         )
         self.input_name_employe = (By.XPATH, '//input[@id="id_nome"]')
+        self.exclude_button = (
+            By.XPATH, '//a[@class="btn btn-danger btn-sm"][1]'
+        )
+        self.confirm_employee_exclusion = (
+            By.XPATH, '//button[@class="btn btn-danger" '
+                      'and contains(text(), "Excluir")]'
+        )
 
     def register_employee(self):
         try:
@@ -60,7 +68,10 @@ class FuncionarioPage(HomePage):
             print("O botão 'Cadastrar Funcionário' não apareceu dentro do tempo limite.")
 
     def get_list_of_employees(self):
-        return self.driver.find_element(*self.list_of_employees).text
+        element = WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(self.list_of_employees)
+        ).text
+        return element
 
     def fill_employee_form(self):
         nome = faker.first_name()
@@ -95,3 +106,9 @@ class FuncionarioPage(HomePage):
 
     def submit_change(self):
         self.driver.find_element(By.XPATH, '//button[@class="btn btn-primary"]').click()
+
+    def exclude_emplye(self):
+        self.driver.find_element(*self.exclude_button).click()
+
+    def submit_employee_exclusion(self):
+        self.driver.find_element(*self.confirm_employee_exclusion).click()
