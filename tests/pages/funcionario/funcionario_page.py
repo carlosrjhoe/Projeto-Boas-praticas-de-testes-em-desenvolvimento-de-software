@@ -87,3 +87,11 @@ class FuncionarioPage(HomePage):
         element = self.driver.find_element(*self.input_name_employe)
         value = element.get_attribute('value')
         return value
+
+    def refresh_name_employe(self):
+        nome = faker.first_name()
+        value = self.driver.find_element(*self.nome_input).send_keys(nome)
+        return value
+
+    def submit_change(self):
+        self.driver.find_element(By.XPATH, '//button[@class="btn btn-primary"]').click()
