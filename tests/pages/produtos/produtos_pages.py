@@ -58,7 +58,3 @@ class ProdutosPages(HomePage):
         # 4. Clique com verificação de sobreposição
         self.driver.execute_script("arguments[0].click();", submit)
 
-        # # 5. Verificação de sucesso
-        # WebDriverWait(self.driver, 10).until(
-        #     EC.invisibility_of_element_located(self.enviar_product_input)
-        # )
