@@ -21,6 +21,7 @@ class ProdutosPages(HomePage):
         self.enviar_product_input = (
             By.XPATH, '//button[@class="btn btn-primary"'
                       ' and contains(text(), "Enviar")]')
+        self.list_of_product = (By.XPATH, '//div[@class="card-header"]/b')
 
     def register_product_button(self):
         self.driver.find_element(
@@ -58,3 +59,8 @@ class ProdutosPages(HomePage):
         # 4. Clique com verificação de sobreposição
         self.driver.execute_script("arguments[0].click();", submit)
 
+    def get_list_of_product(self):
+        element = WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located(self.list_of_product)
+        ).text
+        return element
