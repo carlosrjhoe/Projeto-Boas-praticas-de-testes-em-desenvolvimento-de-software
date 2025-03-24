@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.action_chains import ActionChains
 from tests.pages.home.home_page import HomePage
+from tests.pages.funcionario.funcionario_page import FuncionarioPage
 from faker import Faker
 
 
@@ -22,6 +23,11 @@ class ProdutosPages(HomePage):
             By.XPATH, '//button[@class="btn btn-primary"'
                       ' and contains(text(), "Enviar")]')
         self.list_of_product = (By.XPATH, '//div[@class="card-header"]/b')
+        self.refresh_button = (
+            By.XPATH, '//a[@class="btn btn-primary btn-sm"'
+                      ' and contains(text(), "Atualizar")]'
+        )
+        self.get_name_product = (By.XPATH, '//td[text()][1]')
 
     def register_product_button(self):
         self.driver.find_element(
@@ -64,3 +70,23 @@ class ProdutosPages(HomePage):
             EC.visibility_of_element_located(self.list_of_product)
         ).text
         return element
+
+    def click_refresh_button(self):
+        element = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(self.refresh_button)
+        )
+        element.click()
+
+    def get_input_name_product(self):
+        element = self.driver.find_element(*self.product_name)
+        return element.get_attribute('value')
+
+    def refresh_name_product(self):
+        nome = self.faker.word().capitalize() + ' ' + self.faker.word()
+        element = self.driver.find_element(*self.product_name)
+        element.clear()
+        element.send_keys(nome)
+        return nome
+
+    def submit_change(self):
+        self.driver.find_element(By.XPATH, '//button[@class="btn btn-primary"]').click()
