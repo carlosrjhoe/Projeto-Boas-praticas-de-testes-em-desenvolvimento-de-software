@@ -1,5 +1,3 @@
-from string import digits
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,6 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from tests.pages.home.home_page import HomePage
 from tests.pages.funcionario.funcionario_page import FuncionarioPage
 from faker import Faker
+from string import digits
 
 
 
@@ -28,6 +27,11 @@ class ProdutosPages(HomePage):
                       ' and contains(text(), "Atualizar")]'
         )
         self.get_name_product = (By.XPATH, '//td[text()][1]')
+        self.exclude_button = (By.XPATH, '//a[@class="btn btn-danger btn-sm"][1]')
+        self.confirm_product_exclusion = (
+            By.XPATH, '//button[@class="btn btn-danger" '
+                      'and contains(text(), "Excluir")]'
+        )
 
     def register_product_button(self):
         self.driver.find_element(
@@ -90,3 +94,9 @@ class ProdutosPages(HomePage):
 
     def submit_change(self):
         self.driver.find_element(By.XPATH, '//button[@class="btn btn-primary"]').click()
+
+    def exclude_product(self):
+        self.driver.find_element(*self.exclude_button).click()
+
+    def submit_product_exclusion(self):
+        self.driver.find_element(*self.confirm_product_exclusion).click()
