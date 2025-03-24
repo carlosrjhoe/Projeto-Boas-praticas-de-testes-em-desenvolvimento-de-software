@@ -1,6 +1,6 @@
 from tests.pages.produtos.produtos_pages import ProdutosPages
 
-def test_register_employee(webdriver):
+def test_register_product(webdriver):
     object_product = ProdutosPages(webdriver)
     object_product.open()
     object_product.click_the_product_link_button()
@@ -10,3 +10,13 @@ def test_register_employee(webdriver):
     result = object_product.get_list_of_product()
     expected = 'Lista de Produtos'
     assert result == expected
+
+def test_refresh_button_product(webdriver):
+    object_product = ProdutosPages(webdriver)
+    object_product.open()
+    object_product.click_the_product_link_button()
+    object_product.click_refresh_button()
+    result = object_product.get_input_name_product()
+    expected = object_product.refresh_name_product()
+    object_product.submit_change()
+    assert result != expected
