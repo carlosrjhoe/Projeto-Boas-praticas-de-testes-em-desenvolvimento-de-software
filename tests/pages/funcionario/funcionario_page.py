@@ -5,7 +5,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.action_chains import ActionChains
 from tests.pages.home.home_page import HomePage
 from faker import Faker
-faker = Faker()
+faker = Faker('pt_BR')
 
 
 class FuncionarioPage(HomePage):
