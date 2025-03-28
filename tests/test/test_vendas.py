@@ -12,14 +12,23 @@ def test_register_sale(webdriver):
     expected = True
     assert result == expected
 
-
-def test_refresh_button_product(webdriver):
+def test_refresh_button_sale(webdriver):
     object_sale = VendasPage(webdriver)
     object_sale.open()
     object_sale.click_the_sales_link_button()
     object_sale.click_refresh_button()
     object_sale.select_product()
     object_sale.submit_change()
+    result = object_sale.get_list_of_product()
+    expected = 'Lista de Vendas Registradas'
+    assert result == expected
+
+def test_exclude_sale(webdriver):
+    object_sale = VendasPage(webdriver)
+    object_sale.open()
+    object_sale.click_the_sales_link_button()
+    object_sale.exclude_product()
+    object_sale.submit_product_exclusion()
     result = object_sale.get_list_of_product()
     expected = 'Lista de Vendas Registradas'
     assert result == expected
