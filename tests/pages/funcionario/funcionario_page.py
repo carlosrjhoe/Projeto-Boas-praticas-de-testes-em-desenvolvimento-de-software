@@ -112,3 +112,17 @@ class FuncionarioPage(HomePage):
 
     def submit_employee_exclusion(self):
         self.driver.find_element(*self.confirm_employee_exclusion).click()
+
+    def submit_fill_in_this_field_nome_input(self):
+        value = self.driver.find_element(*self.nome_input)
+        return value.get_attribute("validationMessage")
+
+    def registration_with_invalid_name_field(self):
+        sobrenome = faker.last_name()
+        cpf = faker.unique.random_number(digits=11, fix_len=True)
+        tempo_servico = faker.random_int(min=1, max=5)
+        remuneracao = faker.random_number(digits=5, fix_len=False)
+        self.driver.find_element(*self.sobrenome_input).send_keys(sobrenome)
+        self.driver.find_element(*self.cpf_input).send_keys(cpf)
+        self.driver.find_element(*self.tempo_de_servico_input).send_keys(tempo_servico)
+        self.driver.find_element(*self.remuneracao_input).send_keys(remuneracao)
